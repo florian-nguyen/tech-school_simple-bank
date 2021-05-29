@@ -4,10 +4,9 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/florian-nguyen/golang-training/tech-school/simple-bank/api"
-	db "github.com/florian-nguyen/golang-training/tech-school/simple-bank/db/sqlc"
-	"github.com/florian-nguyen/golang-training/tech-school/simple-bank/db/util"
-
+	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/api"
+	db "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/sqlc"
+	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/util"
 	_ "github.com/lib/pq" // blind import is necessary to talk with database
 )
 
@@ -25,6 +24,6 @@ func main() {
 
 	err = server.Start(config.ServerAddress)
 	if err != nil {
-		log.Fatalf("Cannot start server:", err)
+		log.Fatal("Cannot start server:", err)
 	}
 }
