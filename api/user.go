@@ -37,7 +37,7 @@ func (server *Server) createUser(ctx *gin.Context) {
 		return
 	}
 
-	hashedPassword, err := util.HashPassword(req.Password)
+	hashedPassword, err := util.HashPassword(req.Password) // Warning (solved): without gomock matcher, will pass even if password is "xyz"
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
@@ -49,6 +49,9 @@ func (server *Server) createUser(ctx *gin.Context) {
 		FullName:       req.FullName,
 		Email:          req.Email,
 	}
+
+	// Warning (solved) : without gomock matcher, will pass even if arg is empty
+	// arg = db.CreateUserParams{}
 
 	user, err := server.store.CreateUser(ctx, arg)
 	if err != nil {
