@@ -12,7 +12,7 @@ import (
 
 	mockdb "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/mock"
 	db "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/sqlc"
-	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/util"
+	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/util"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 )
@@ -94,7 +94,7 @@ func TestGetAccountAPI(t *testing.T) {
 			tc.buildStubs(store)
 
 			// start test server and send request
-			server := NewServer(store)
+			server := NewTestServer(t, store)
 
 			// Not necessary to run a server. Instead, a recorder will memorize the response of the API request
 			recorder := httptest.NewRecorder()

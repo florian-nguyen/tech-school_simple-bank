@@ -13,7 +13,7 @@ import (
 
 	mockdb "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/mock"
 	db "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/sqlc"
-	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/util"
+	util "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
@@ -186,7 +186,7 @@ func TestCreateUserAPI(t *testing.T) {
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
 
-			server := NewServer(store)
+			server := NewTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			// Marshal body data to JSON

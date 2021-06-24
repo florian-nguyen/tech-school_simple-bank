@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/util"
+	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/util"
 	_ "github.com/lib/pq" // blank identifier required to avoid automatic delete on save
 )
 

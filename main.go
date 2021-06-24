@@ -6,7 +6,7 @@ import (
 
 	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/api"
 	db "github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/sqlc"
-	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/db/util"
+	"github.com/florian-nguyen/tech-school_simple-bank/simple-bank/util"
 	_ "github.com/lib/pq" // blind import is necessary to talk with database
 )
 
@@ -20,7 +20,10 @@ func main() {
 	}
 
 	store := db.NewStore(conn)
-	server := api.NewServer(store)
+	server, err := api.NewServer(config, store)
+	if err != nil {
+		log.Fatal("Cannot create server: ", err)
+	}
 
 	err = server.Start(config.ServerAddress)
 	if err != nil {

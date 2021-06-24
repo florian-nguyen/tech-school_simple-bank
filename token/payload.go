@@ -9,6 +9,7 @@ import (
 
 var (
 	ErrExpiredToken = errors.New("Token has expired")
+
 	ErrInvalidToken = errors.New("Token is invalid")
 )
 
@@ -16,7 +17,7 @@ var (
 type Payload struct {
 	ID        uuid.UUID `json:"id"`
 	Username  string    `json:"username"`
-	IssuedAt  time.Time `json:"issued_at`
+	IssuedAt  time.Time `json:"issued_at"`
 	ExpiredAt time.Time `json:"expired_at"`
 }
 
